@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <string>
 #include <gumbo.h>
+#include <fstream>
 
 /* only logic.cpp functions */
 // Callback function to write received data
@@ -19,6 +20,7 @@ void search_links(const GumboNode* node, std::vector<std::string>& links);
 - simple_https_get()
 - return_body()
 - grab_links()
+- creat_text()
 */
 
 void simple_https_get(char* url)
@@ -85,6 +87,11 @@ std::vector<std::string> grab_links(std::string& html)
 	dls_confirm("Search finished");
 	// return the vector
 	return links;
+}
+
+void creat_text(std::string text)
+{
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////

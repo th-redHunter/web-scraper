@@ -10,7 +10,8 @@ typedef std::vector<std::string> STR_VECTOR;
 
 void simple_https_get(char* url); // simpe https get request
 std::string return_body(char* url); // return the body
-std::vector<std::string> grab_links(std::string& html);
+std::vector<std::string> grab_links(std::string& html); // grab links
+void create_file(std::string& text);
 
 /* allow SPOS */
 #define dls_confirm(msg) printf("[+] %s\n", msg);        // confirm
