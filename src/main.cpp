@@ -16,14 +16,15 @@ options:
 -u, --url	for your url
 -h, --help	for help
 -x, --export	choose export file
+-n, --name	exported file name
 )";
 const std::string fucked_up = R"(
 bad argument: try -h or --help for ... you know, it's name\n
 )";
 
 // Global
-bool check_export {false}; // export or not
-std::string expoert_file_name; // for the nameof the file
+bool check_export{false};															// export or not
+std::string expoert_file_name{"empty"}; // for the nameof the file
 
 // main code
 int main(int argc, char *argv[])
@@ -61,7 +62,20 @@ int main(int argc, char *argv[])
 		}
 		else if (arg == "-x" || arg == "--export") // EXPORT
 		{
-			check_export= true;
+			check_export = true;
+		}
+		else if (arg == "-n" || arg == "--name") // NAME
+		{
+			if (i != argc - 1)
+			{
+				expoert_file_name = vlu;
+			}
+			else
+			{
+				dls_deny("you miss a value");
+				std::cout << fucked_up;
+				return 1;
+			}
 		}
  }
 
@@ -81,16 +95,16 @@ int main(int argc, char *argv[])
 		return 1;
  }
  std::vector<std::string> links = grab_links(html);
-	if (!check_export)
-	{
+ if (!check_export)
+ {
 		dls_head("LINKS");
 		for (auto const &link : links)
 		{
 			dls_confirm(link.c_str());
 		}
-	}
-	else
-	{
+ }
+ else
+ {
 		std::string data;
 		data += "===[LINKS]===(inside->\t";
 		data += std::string(url);
@@ -102,8 +116,11 @@ int main(int argc, char *argv[])
 			data += '\n';
 		}
 
-		create_file(data, expoert_file_name);
-	}
+		if (expoert_file_name == "empty")
+			create_file(data, "webscraper.output");
+		else
+			create_file(data, expoert_file_name);
+ }
 
  return 0;
 }

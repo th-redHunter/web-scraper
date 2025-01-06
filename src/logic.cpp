@@ -88,7 +88,7 @@ std::vector<std::string> grab_links(std::string &html)
  return links;
 }
 
-void creat_file(std::string text, std::string name) // create file of links
+void create_file(std::string text, std::string name) // create file of links
 {
  std::ofstream file(name);
  file << text << std::endl;
