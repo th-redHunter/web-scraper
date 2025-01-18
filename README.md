@@ -18,8 +18,7 @@ first clone the repositry
 `git clone https://github.com/th-redHunter/web-scraper.git`
 
 then you have to build
-`cd web-scraper`
-`make`
+`cd web-scraper; make`
 
 now run it using
 `./bin/web-scrapper -v` => check version
