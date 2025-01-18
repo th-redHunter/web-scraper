@@ -13,10 +13,13 @@ void debug(int num);
 const std::string help = R"(
 usage: web-scrapper -u [URL] [options]
 options:
+-v, --version for version
 -u, --url	for your url
 -h, --help	for help
 -x, --export	choose export file
 -n, --name	exported file name
+
+example: web-scrapper -u example.com -x -n example_links
 )";
 const std::string fucked_up = R"(
 bad argument: try -h or --help for ... you know, it's name\n
@@ -77,6 +80,10 @@ int main(int argc, char *argv[])
 				return 1;
 			}
 		}
+    else if (arg == "-v" || arg == "--version")
+    {
+      std::cout << "web-scrapper by red hunter\n version (1.0) beta" << std::endl;
+    }
  }
 
  if (url == "nothing")
